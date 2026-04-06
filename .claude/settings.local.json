@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(PYTHONPATH=src python3 src/logconsolidator/main.py)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(git branch:*)",
+      "Bash(pip3 install:*)",
+      "Bash(PYTHONPATH=src python3 -c \"import duckdb; con = duckdb.connect\\('/Users/aj/Desktop/senior-project/data/logs.duckdb'\\); print\\(con.execute\\('SELECT count\\(*\\) FROM logs'\\).fetchone\\(\\)\\); print\\('---'\\); print\\(con.execute\\('SELECT * FROM logs LIMIT 5'\\).fetchdf\\(\\)\\)\")",
+      "Read(//Users/aj/Desktop/logs/**)",
+      "Bash(PYTHONPATH=src python3 -c \"\nimport time, signal, sys\nsys.path.insert\\(0, 'src'\\)\nfrom logconsolidator.main import LogConsolidatorApp\napp = LogConsolidatorApp\\(\\)\napp.start\\(\\)\ntime.sleep\\(8\\)\napp.stop\\(\\)\nimport duckdb\ncon = duckdb.connect\\('data/logs.duckdb'\\)\ncount = con.execute\\('SELECT count\\(*\\) FROM logs'\\).fetchone\\(\\)\nprint\\(f'Row count: {count[0]}'\\)\nif count[0] > 0:\n    rows = con.execute\\('SELECT * FROM logs LIMIT 3'\\).fetchall\\(\\)\n    for r in rows:\n        print\\(r\\)\ncon.close\\(\\)\n\" 2>&1)",
+      "Bash(PYTHONPATH=src python3 -c \"\nimport sys, time, logging\nlogging.basicConfig\\(level=logging.DEBUG\\)\nsys.path.insert\\(0, 'src'\\)\nfrom logconsolidator.ingest.state import PositionStateStore\nfrom logconsolidator.ingest.reader import LogReader\nfrom pathlib import Path\n\nstore = PositionStateStore\\(Path\\('data/state/positions.json'\\)\\)\nreader = LogReader\\('ssh_auth', Path\\('/Users/aj/Desktop/logs/secure.log'\\), store\\)\nlines = reader.read_available_lines\\(\\)\nprint\\(f'Lines read: {len\\(lines\\)}'\\)\nif lines:\n    print\\(lines[0]\\)\n    print\\(lines[-1]\\)\n\" 2>&1)",
+      "Bash(PYTHONPATH=src python3 -c \":*)",
+      "Bash(rm -f /Users/aj/Desktop/senior-project/data/logs.duckdb*)",
+      "Bash(rm -rf ~/.cache/chroma/onnx_models/)",
+      "Bash(echo {})",
+      "Bash(PYTHONPATH=src python3 -c \"\nimport duckdb\ncon = duckdb.connect\\('/Users/aj/Desktop/senior-project/data/logs.duckdb'\\)\nprint\\(con.execute\\('SELECT count\\(*\\) FROM logs'\\).fetchone\\(\\)\\)\nprint\\(con.execute\\('SELECT * FROM logs LIMIT 3'\\).fetchall\\(\\)\\)\ncon.close\\(\\)\n\")",
+      "Bash(kill 25101)",
+      "Bash(PYTHONPATH=src python3 -c \"\nimport duckdb\ncon = duckdb.connect\\('/Users/aj/Desktop/senior-project/data/logconsolidator.duckdb'\\)\nprint\\('=== SCHEMA ==='\\)\nfor row in con.execute\\('DESCRIBE logs'\\).fetchall\\(\\):\n    print\\(row\\)\nprint\\(\\)\ncount = con.execute\\('SELECT count\\(*\\) FROM logs'\\).fetchone\\(\\)[0]\nprint\\(f'Total rows: {count}'\\)\nprint\\(\\)\nprint\\('=== SAMPLE ROWS ==='\\)\nfor row in con.execute\\('SELECT * FROM logs LIMIT 3'\\).fetchall\\(\\):\n    print\\(row\\)\ncon.close\\(\\)\n\")"
+    ]
+  }
+}

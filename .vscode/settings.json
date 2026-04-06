@@ -7,12 +7,12 @@
     },
     "duckdb.databases": [
         {
-            "alias": "logs",
+            "alias": "logconsolidator",
             "type": "file",
-            "path": "/Users/aj/Desktop/senior-project/logs.duckdb",
-            "readOnly": true,
+            "path": "/Users/aj/Desktop/senior-project/data/logconsolidator.duckdb",
+            "readOnly": false,
             "attached": true
         }
     ],
-    "duckdb.defaultDatabase": "logs"
+    "duckdb.defaultDatabase": "logconsolidator"
 }
