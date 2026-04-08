@@ -3,14 +3,15 @@
         "*.copilotmd": "vscode.markdown.preview.editor",
         "*.parquet": "duckdb.dataFileViewer",
         "*.csv": "duckdb.dataFileViewer",
-        "*.tsv": "duckdb.dataFileViewer"
+        "*.tsv": "duckdb.dataFileViewer",
+        "*.xlsx": "duckdb.dataFileViewer"
     },
     "duckdb.databases": [
         {
             "alias": "logconsolidator",
             "type": "file",
             "path": "/Users/aj/Desktop/senior-project/data/logconsolidator.duckdb",
-            "readOnly": false,
+            "readOnly": true,
             "attached": true
         }
     ],
