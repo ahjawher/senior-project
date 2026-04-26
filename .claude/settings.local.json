@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(pip install *)",
+      "Bash(.venv/bin/python3 -m pip install -e .)",
+      "Bash(.venv/bin/python3 src/logconsolidator/main.py)",
+      "Bash(rm -rf .venv)",
+      "Bash(/opt/homebrew/bin/python3.12 -m venv .venv)",
+      "Bash(brew services *)",
+      "Bash(brew install *)",
+      "Bash(createdb logconsolidator *)",
+      "Read(//tmp/**)",
+      "Bash(createuser -s postgres)",
+      "Read(//private/tmp/**)",
+      "Bash(mkdir -p /Users/aj/Desktop/logs)",
+      "Bash(echo 'Apr 22 21:41:33 server sshd[12345]: invalid user testuser from 192.168.1.100')",
+      "Bash(psql -d logconsolidator -c \"SELECT COUNT\\(*\\) FROM logs LIMIT 5;\")",
+      "Bash(psql -d logconsolidator -c ' *)",
+      "Bash(pkill -f \"logconsolidator/main.py\")",
+      "Bash(echo 'Apr 22 21:42:15 server sshd[12346]: accepted password for john from 192.168.1.50')",
+      "Bash(psql -d logconsolidator -c \"SELECT source_id, raw_message FROM logs ORDER BY id DESC LIMIT 5;\")",
+      "Bash(.venv/bin/uvicorn logconsolidator.api.server:create_app --factory --host 0.0.0.0 --port 8000)",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(pkill -f uvicorn)",
+      "Bash(curl -s -X POST http://localhost:8000/query -H 'Content-Type: application/json' -d '{\"question\": \"what SSH errors happened?\"}')",
+      "Bash(brew *)",
+      "Bash(pkill -INT -f \"logconsolidator.main\")",
+      "Bash(grep -v \"^$\")",
+      "Bash(pkill -INT -f \"logconsolidator\")",
+      "Bash(pkill -f \"uvicorn\")",
+      "Bash(lsof -ti:8000)",
+      "Bash(xargs -r kill -9)",
+      "Bash(curl -s http://127.0.0.1:8000/health)"
+    ]
+  }
+}

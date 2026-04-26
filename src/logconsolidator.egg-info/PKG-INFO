@@ -1,0 +1,26 @@
+Metadata-Version: 2.4
+Name: logconsolidator
+Version: 0.1.0
+Summary: Queue-based log consolidator
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: chromadb
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: openai>=1.0
+Requires-Dist: psycopg[binary]
+Requires-Dist: python-dotenv
+
+# logconsolidator
+
+Internal producer-consumer log pipeline with bounded queues.
+
+Run locally:
+
+```bash
+python3 main.py
+```
+
+Config lives at `config/sources/*.json` (one file per log source).
+Processed records are written to `data/processed.jsonl`.
+Startup fails fast if any configured source `path` is missing or unreadable.
