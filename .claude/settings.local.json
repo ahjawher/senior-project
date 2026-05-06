@@ -31,7 +31,19 @@
       "Bash(pkill -f \"uvicorn\")",
       "Bash(lsof -ti:8000)",
       "Bash(xargs -r kill -9)",
-      "Bash(curl -s http://127.0.0.1:8000/health)"
-    ]
+      "Bash(curl -s http://127.0.0.1:8000/health)",
+      "Bash(git push *)",
+      "Bash(git fetch *)",
+      "Bash(git reset *)",
+      "Bash(git restore *)",
+      "Bash(git rm *)",
+      "Bash(git ls-tree *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Skill(update-config)",
+      "Bash(.venv/bin/python3 *)",
+      "Bash(PYTHONPATH=src .venv/bin/python3 *)"
+    ],
+    "defaultMode": "bypassPermissions"
   }
 }
